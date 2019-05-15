@@ -1,3 +1,10 @@
+<?php
+    
+    //define variables and set to empty values
+     
+   
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -90,7 +97,7 @@
 
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-xs-12 myform">
-                                        <form method="POST" action="home.php" >
+                                        <form  method="POST"  action="home.php">
                                             <div class="form-group">
                                              <i class="fa fa-user"style="color:lightgrey" aria-hidden="true"></i>
                                               <label class="col-form-label" for="formGroupExampleInput">Full Name</label>
@@ -126,7 +133,9 @@
                                             <div class="form-group">
                                                 <i class="fa fa-file-powerpoint"style="color:grey" aria-hidden="true"></i>
                                                 <label class="col-form-label" for="formGroupExampleInput2">PPT file</label>
-                                                <input  type="file" name="ppt_file" id="fileToUpload">
+                                                <input id="file-upload"  type="file" name="ppt_file" id="fileToUpload" onchange="fileSeleted()" style="display: none; width: 0px;">
+                                                <button id='file-btn' type="button" class="btn btn-primary btn-floating" onclick="document.getElementById('file-upload').click()">+</button>
+                                                <h6 style='display: inline;' id="upload-data"></h6>
                                             </div>
                                             <div class="modal-footer">
                                                     <button class="btn btn-primary odom-submit">Submit</button>
@@ -152,7 +161,7 @@
      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-     
+     <script src="js/script.js"></script>
      <!-- <script></script>
          $(function () {
     $('body').on('click', '.odom-submit', function (e) {

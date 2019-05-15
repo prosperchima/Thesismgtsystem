@@ -76,3 +76,23 @@ responsive:{
 
 
 
+function fileSeleted()
+{
+	let files = document.getElementById("file-upload").files;
+
+	let name = files[0].name;
+
+	$("#file-btn").removeClass("btn-primary");
+	$("#file-btn").addClass("btn-success");
+
+	$("#upload-data").html(name + " added <span style='color: blue; cursor: pointer;' onclick='removeFile()'>Remove</span>");
+}
+
+
+function removeFile()
+{
+	$("#upload-data").html("");
+	document.getElementById("file-upload").files= null;
+	$("#file-btn").addClass("btn-primary");
+	$("#file-btn").removeClass("btn-success");
+}

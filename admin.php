@@ -1,19 +1,19 @@
 <?php
 
 if (isset($_POST['login']))  {
-    $dbNumber = "20151010176";
+    $dbName = "admin";
     $dbPassword = "password";
 
-    $number = strip_tags($_POST["number"]);
-    $number = strtolower($number);
+    $name = strip_tags($_POST["name"]);
+    $name = strtolower($name);
     $password = strip_tags($_POST["password"]);
 
-    if($number == $dbNumber && $password == $dbPassword) {
-        $_SESSION['$number'] = $number;
-        header('location:home.php');
+    if($name == $dbName && $password == $dbPassword) {
+        $_SESSION['$username'] = $username;
+        header('location:adminhome.php');
 
     }else{
-        echo"wrong $number or password";
+        echo"wrong username or password";
     }
 }
 ?>
@@ -57,9 +57,9 @@ if (isset($_POST['login']))  {
                                 <p class="p-proceed pb-2">Enter the following to proceed</p>
                             </div>    
                                 <div class="container">
-                                        <form action="index.php" method="post">
+                                        <form action="adminhome.php" method="post">
                                                 <div class="form-group">
-                                                  <input type="number" name="number" class="form-control" id="reg-number" aria-describedby="emailHelp" placeholder="Enter Registration Number" required>
+                                                  <input type="name" name="name" class="form-control" id="user_name" aria-describedby="emailHelp" placeholder="" required>
                                                 </div>
                                                 <div class="form-group">
                                                   <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">

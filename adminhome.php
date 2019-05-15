@@ -1,107 +1,7 @@
 <?php
     error_reporting(E_ALL & ~E_NOTICE);
     session_start();
-
-//Action of the CONTACT form is been carried out here
-//Declearing a variable and assigning the form field_name to it
-//And the isset($_POST['']) alerts the php of the field entering
-
-    if (isset ($_POST['contact_name']) && isset($_POST['contact_email']) && isset($_POST['contact_text'])){
-        $contact_name = $_POST['contact_name'];
-       $contact_email = $_POST['contact_email'];
-       $contact_text = $_POST['contact_text'];
-  }
-  if (!empty($contact_name) && !empty('$contact_email') && !empty('$contact_text')) {
-      $to = 'chimaprosperukoma@gmail.com';
-      $subject = 'contact form submitted';
-      $message = '$contact_name. "\n" .$contact_text';
-      $headers = '$contact_email';
-      // if (strlen('contact_name')>10) {
-      //     echo 'max text is 10';
-      // }
-  
-      if (@mail($to, $subject, $message, $headers)) {
-           'Thanks for contacting us.';
-      } else{
-           'Sorry an error occured';
-      }
-  } else {
-           'All fields required';
-  
-  }
-  //Connection to the database
-  $db = new mysqli('localhost', 'root', '','databoard');
-      
-     
-   $db->query("INSERT INTO `users` ( `contact_name`, `contact_email`, `contact_message`) 
-   VALUES ('$contact_name', '$contact_email', '$contact_text')");
-  ?>
-
-  <?php
-
-  //stage1 form
-  //Declearing a variable and assigning the form field_name to it
-  //And the isset($_POST['']) alerts the php of the field entering
-  if (isset ($_POST['full_name']) && isset($_POST['reg_number']) && isset($_POST['department']) && isset($_POST['email']) && isset($_POST['phone']) && isset($_POST['ppt_file'])){
-    $full_name = $_POST['full_name'];
-    $reg_number = $_POST['reg_number'];
-    $department = $_POST['department'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $ppt_file = $_POST['ppt_file'];
-    
-
-if (!empty($full_name) && !empty('$email') && !empty('$ppt_file') ) {
-   $to = 'chimaprosperukoma@gmail.com';
-   $subject = 'stage1 form received';
-   $message = '$full_name. "\n" .$reg_number "\n" .$ppt_file';
-   $headers = '$email';
-   // if (strlen('contact_name')>10) {
-   //     echo 'max text is 10';
-   // }
-
-   if (@mail($to, $subject, $message, $headers)) {
-        'Thanks for contacting us.';
-   } else{
-        'Sorry an error occured';
-   }
-} else {
-        'All fields required';
-
-}
-  }
-
- //Connection to database 
-$db = new mysqli('localhost', 'root','','databoard');
-
-//die();
-
-
-//inserting a file into the database
-$tmpfile = "";
-
-$ext = "";
-
-$e = explode(".", $_FILES['ppt_file']['name']);
-
-if(count($e) > 1)
-{
-    $ext = $e[count($e) - 1];
-}
-
-$real_name = $_FILES['ppt_file']['name'];
-
-
-$newName = md5(time()).".".$ext;
-
-
-move_uploaded_file($_FILES['ppt_file']['tmp_name'],  "files/".$newName);
-
-$db->query("INSERT INTO pdgstage (full_name,reg_number,department,email,phone,file_name,sudoe) 
-VALUES ('$full_name', '$reg_number', '$department', '$email', '$phone','$real_name','$newName')");
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -122,13 +22,13 @@ VALUES ('$full_name', '$reg_number', '$department', '$email', '$phone','$real_na
 		<link rel="stylesheet" href="fonts/ubuntu/stylesheet.css" type="text/css"/> 
 		<link rel="stylesheet" href="fonts/worksans/stylesheet.css" type="text/css"/> 
 		<link rel="stylesheet" href="fonts/sourcesanspro/stylesheet.css" type="text/css"/> 
-		<link rel="stylesheet" href="fonts/montserrat/stylesheet.css" type="text/css"/> 
-		<link rel="stylesheet" href="fonts/lato/stylesheet.css" type="text/css"/> 
-    <link rel="stylesheet" href="css/font-awesome.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <!-- External css -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+		<link rel="stylesheet" href="fonts/montserrat/stylesheet.css" type="text/css"/>
+		<link rel="stylesheet" href="fonts/lato/stylesheet.css" type="text/css"/>
+        <link rel="stylesheet" href="css/font-awesome.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <!-- External css -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
 
 <body>
@@ -141,10 +41,10 @@ VALUES ('$full_name', '$reg_number', '$department', '$email', '$phone','$real_na
                                 <h4 class="first-h4">Data <span class="board-color">Board</span></h4>
                             </div>
                         <hr class="line">
-                            <div class="pt-2 home">
+                            <!-- <div class="pt-2 home">
                                 <p class=""><a class="home-button nav-link font-12" href="home.php">HOME</a></p>
-                            </div>
-                            <nav class="container navbar navbar-expand-lg navbar-light bg-transparent pt-3">
+                            </div> -->
+                            <!-- <nav class="container navbar navbar-expand-lg navbar-light bg-transparent pt-3">
                                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                                         <span class="navbar-toggler-icon"></span>
                                     </button>
@@ -185,7 +85,7 @@ VALUES ('$full_name', '$reg_number', '$department', '$email', '$phone','$real_na
                                                  <a href="#"><p class="trans3">Settings</p></a>
                                                  <i class=""></i>
                                         </div>
-                                </nav>
+                                </nav> -->
                         </div>        
                         <div class="col-md-10 ">
                             <div class="container-fluid">
@@ -198,66 +98,73 @@ VALUES ('$full_name', '$reg_number', '$department', '$email', '$phone','$real_na
                                             </ul>
                                         </div>
                                 </div>
-                                <div class="row pt-2">
-                                    <div class="col second-row">
-                                        <ul class="sub-menu">
-                                            <!-- <a href="#"><li><p class="" >HOME</p></li></a> -->
-                                            <a href="#"><li><p class="prosper" >PROJECTS</p></li></a>
-                                            <a href="login.php"><li><p class="prosper" >ABOUT US</p></li></a>
-                                            <a href="contact.php"><li><p class="prosper" >CONTACT US</p></li></a>             
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="row pt-2">
-                                    <div class="col-md-4">
-                                        <a href="#"><div class="card design" style="width:100%;">
-                                            <center><img class="card-img-top second-img mt-5" src="images/excess8.png" alt="Card image cap"></center>
-                                            <center><p class="card-text pt-2"><a href="#">PGD LEVEL</a></p></center>
-                                            <div class="card-body">
-                                            <a href="#"><img style="width:100%;height:100%; " src="images/price-toon1.png" alt=""></a>
-                                            </div></a>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <table class="table">
+                                                <caption>List of submitted project</caption>
+                                                <thead>
+                                                    <tr>
+                                                    <th scope="col">S/N</th>
+                                                    <th scope="col"> Name</th>
+                                                    <th scope="col">Reg_Number</th>
+                                                    <th scope="col">Email  </th>
+                                                    <th scope="col">Ppt_file</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php               
+                                                    include("dbconnect.php");
+                                                    $res = $db->query("SELECT * FROM pdgstage");
+
+                                                    $i = 1;
+
+                                                    while(($row = $res->fetch_assoc()) != null)
+                                                    {
+                                                        echo "<tr class='table-dark'>
+                                                            <th scope='row'>".$i."</th>
+                                                            <td>".$row['full_name']."</td>
+                                                            <td>".$row['reg_number']."</td>
+                                                            <td>".$row['email']."</td>
+                                                            <td>".$row['file_name']."</td>
+                                                            <td><button type='button' class='btn btn-success'>Successful</button></td>
+                                                            <td><button type='button' class='btn btn-danger'>Unsuccessful</button></td>
+                                                        </tr>";
+
+                                                        $i++;
+                                                    }
+                                                ?>
+                                                    <!-- <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>Jacob</td>
+                                                    <td>Thornton</td>
+                                                    <td>@fat</td>
+                                                    </tr>
+                                                    <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>Larry</td>
+                                                    <td>the Bird</td>
+                                                    <td>@twitter</td>
+                                                    </tr> -->
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="#"><div class="card design s-hide" style="width:100%;">
-                                            <center><img class="card-img-top second-img mt-5" src="images/excess9.png" alt="Card image cap"></center>
-                                            <center><a href="#"><p class="card-text pt-2">MASTERS LEVEL</p></center>
-                                            <div class="card-body">
-                                                <a href="#"><img style="width:100%;height:100%; " src="images/price-toon2.png" alt=""></a>
-                                            </div>
-                                        </div></a>
-                                    </div>
                                 </div>
-                                <div class="row ">
-                                    <div class="col-md-4">
-                                        
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="#"><div class="card design" style="width:100%;">
-                                            <center><img class="card-img-top second-img mt-5" src="images/excess10.png" alt="Card image cap"></center>
-                                            <center><p class="card-text pt-2"><a href="#">PHD LEVELS</a></p></center>
-                                            <div class="card-body">
-                                                <a href="#"><img style="width:100%;height:100%; " src="images/price-toon3n.png" alt=""></a>
-                                            </div>
-                                        </div></a>
-                                    </div>
-                                </div>
-                                <div class="container">
-                                    <div class="row  mt-2">
+                                
+                                <!-- <div class="container">
+                                    <div class="row mt-3 ">
                                         <div class="col-3">
 
                                         </div>
-                                    <div class="col-lg-6 col-md-6 col-xs-12 copy ">
+                                    <div class="col-lg-6 col-md-6 col-xs-12 copy mt-3">
                                         <p >&copy 2018 ProsTech - Multipurpose & Creativity is in the mind by <span class="font-weight-bold"style="color:gray">Group3</span></p>
                                     </div>
                                     <div class="col-3">
 
                                     </div>
                                     </div>
-                                </div>
+                                </div> -->
                         </div>
                     </div>
                 </div>        
