@@ -96,3 +96,4 @@ function removeFile()
 	$("#file-btn").addClass("btn-primary");
 	$("#file-btn").removeClass("btn-success");
 }
+

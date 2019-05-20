@@ -1,8 +1,8 @@
 <?php
     
-    //define variables and set to empty values
+    // starting the session
      
-   
+   session_start();
 ?>
 
 
@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DataBoard</title>
+    <!-- Internal css links -->
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.css">
@@ -36,6 +37,7 @@
 
 <body>
         <section id="">
+                <!-- Side navbar -->
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-2 f-col">
@@ -97,7 +99,15 @@
 
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-xs-12 myform">
-                                        <form  method="POST"  action="home.php">
+                                        <!-- php code that allows a notification message to show after form submits successfully -->
+                                        <?php
+                                            if(isset($_SESSION['prosper']))
+                                            {
+                                                echo "<div id='form-msg'>".$_SESSION['prosper']."</div>";
+                                                unset($_SESSION['prosper']);
+                                            }
+                                        ?>
+                                        <form  method="POST"  action="Script/formscript.php" enctype="multipart/form-data">
                                             <div class="form-group">
                                              <i class="fa fa-user"style="color:lightgrey" aria-hidden="true"></i>
                                               <label class="col-form-label" for="formGroupExampleInput">Full Name</label>

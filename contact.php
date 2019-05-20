@@ -114,7 +114,7 @@ error_reporting(E_ALL ^ E_NOTICE);
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-12 sm-12">
-                                        <form  method="POST" action="home.php">
+                                        <form  method="POST" action="Script/contact.php">
                                             <div class="form-group">
                                                 <i class="fa fa-user"style="color:lightgrey" aria-hidden="true"></i>
                                                 <label class="col-form-label" for="formGroupExampleInput">Full Name</label>

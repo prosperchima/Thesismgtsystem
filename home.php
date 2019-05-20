@@ -1,106 +1,3 @@
-<?php
-    error_reporting(E_ALL & ~E_NOTICE);
-    session_start();
-
-//Action of the CONTACT form is been carried out here
-//Declearing a variable and assigning the form field_name to it
-//And the isset($_POST['']) alerts the php of the field entering
-
-    if (isset ($_POST['contact_name']) && isset($_POST['contact_email']) && isset($_POST['contact_text'])){
-        $contact_name = $_POST['contact_name'];
-       $contact_email = $_POST['contact_email'];
-       $contact_text = $_POST['contact_text'];
-  }
-  if (!empty($contact_name) && !empty('$contact_email') && !empty('$contact_text')) {
-      $to = 'chimaprosperukoma@gmail.com';
-      $subject = 'contact form submitted';
-      $message = '$contact_name. "\n" .$contact_text';
-      $headers = '$contact_email';
-      // if (strlen('contact_name')>10) {
-      //     echo 'max text is 10';
-      // }
-  
-      if (@mail($to, $subject, $message, $headers)) {
-           'Thanks for contacting us.';
-      } else{
-           'Sorry an error occured';
-      }
-  } else {
-           'All fields required';
-  
-  }
-  //Connection to the database
-  $db = new mysqli('localhost', 'root', '','databoard');
-      
-     
-   $db->query("INSERT INTO `users` ( `contact_name`, `contact_email`, `contact_message`) 
-   VALUES ('$contact_name', '$contact_email', '$contact_text')");
-  ?>
-
-  <?php
-
-  //stage1 form
-  //Declearing a variable and assigning the form field_name to it
-  //And the isset($_POST['']) alerts the php of the field entering
-  if (isset ($_POST['full_name']) && isset($_POST['reg_number']) && isset($_POST['department']) && isset($_POST['email']) && isset($_POST['phone']) && isset($_POST['ppt_file'])){
-    $full_name = $_POST['full_name'];
-    $reg_number = $_POST['reg_number'];
-    $department = $_POST['department'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $ppt_file = $_POST['ppt_file'];
-    
-
-if (!empty($full_name) && !empty('$email') && !empty('$ppt_file') ) {
-   $to = 'chimaprosperukoma@gmail.com';
-   $subject = 'stage1 form received';
-   $message = '$full_name. "\n" .$reg_number "\n" .$ppt_file';
-   $headers = '$email';
-   // if (strlen('contact_name')>10) {
-   //     echo 'max text is 10';
-   // }
-
-   if (@mail($to, $subject, $message, $headers)) {
-        'Thanks for contacting us.';
-   } else{
-        'Sorry an error occured';
-   }
-} else {
-        'All fields required';
-
-}
-  }
-
- //Connection to database 
-$db = new mysqli('localhost', 'root','','databoard');
-
-//die();
-
-
-//inserting a file into the database
-$tmpfile = "";
-
-$ext = "";
-
-$e = explode(".", $_FILES['ppt_file']['name']);
-
-if(count($e) > 1)
-{
-    $ext = $e[count($e) - 1];
-}
-
-$real_name = $_FILES['ppt_file']['name'];
-
-
-$newName = md5(time()).".".$ext;
-
-
-move_uploaded_file($_FILES['ppt_file']['tmp_name'],  "files/".$newName);
-
-$db->query("INSERT INTO pdgstage (full_name,reg_number,department,email,phone,file_name,sudoe) 
-VALUES ('$full_name', '$reg_number', '$department', '$email', '$phone','$real_name','$newName')");
-
-?>
 
 
 <!DOCTYPE html>
@@ -144,6 +41,7 @@ VALUES ('$full_name', '$reg_number', '$department', '$email', '$phone','$real_na
                             <div class="pt-2 home">
                                 <p class=""><a class="home-button nav-link font-12" href="home.php">HOME</a></p>
                             </div>
+                            <!-- Side navbar -->
                             <nav class="container navbar navbar-expand-lg navbar-light bg-transparent pt-3">
                                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                                         <span class="navbar-toggler-icon"></span>
@@ -199,16 +97,16 @@ VALUES ('$full_name', '$reg_number', '$department', '$email', '$phone','$real_na
                                         </div>
                                 </div>
                                 <div class="row pt-2">
-                                    <div class="col second-row">
-                                        <ul class="sub-menu">
+                                    <!-- <div class="col second-row">
+                                        <ul class="sub-menu"> -->
                                             <!-- <a href="#"><li><p class="" >HOME</p></li></a> -->
-                                            <a href="#"><li><p class="prosper" >PROJECTS</p></li></a>
+                                            <!-- <a href="#"><li><p class="prosper" >PROJECTS</p></li></a>
                                             <a href="login.php"><li><p class="prosper" >ABOUT US</p></li></a>
                                             <a href="contact.php"><li><p class="prosper" >CONTACT US</p></li></a>             
                                         </ul>
-                                    </div>
+                                    </div> -->
                                 </div>
-                                <div class="row pt-2">
+                                <div class="row pt-5">
                                     <div class="col-md-4">
                                         <a href="#"><div class="card design" style="width:100%;">
                                             <center><img class="card-img-top second-img mt-5" src="images/excess8.png" alt="Card image cap"></center>
@@ -245,8 +143,8 @@ VALUES ('$full_name', '$reg_number', '$department', '$email', '$phone','$real_na
                                         </div></a>
                                     </div>
                                 </div>
-                                <div class="container">
-                                    <div class="row  mt-2">
+                                <div class="container ">
+                                    <div class="row  pt-4 mt-5">
                                         <div class="col-3">
 
                                         </div>

@@ -269,7 +269,12 @@ body{
     font-size: 18px;
     margin-left: 0px !important;
 }
-
+#form-msg{
+    color: rgb(44, 192, 44) !important;
+    font-size: 20px !important;
+    font-family: montserratbold;
+    text-align: center;
+}
 
 @media screen and (max-width: 576px) {
     .btn2{

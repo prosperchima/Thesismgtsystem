@@ -41,51 +41,7 @@
                                 <h4 class="first-h4">Data <span class="board-color">Board</span></h4>
                             </div>
                         <hr class="line">
-                            <!-- <div class="pt-2 home">
-                                <p class=""><a class="home-button nav-link font-12" href="home.php">HOME</a></p>
-                            </div> -->
-                            <!-- <nav class="container navbar navbar-expand-lg navbar-light bg-transparent pt-3">
-                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                                        <span class="navbar-toggler-icon"></span>
-                                    </button>
-                                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                                        <ul class="navbar-nav mt-2 mt-lg-0 pl-4">
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link font-12 font-12  px- button" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PGD LEVEL</a>
-                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                    <a class="dropdown-item font-14" href="pgdstage1.php">STAGE 1</a>
-                                                    <a class="dropdown-item font-14" href="#">STAGE 2</a>
-                                                    <a class="dropdown-item font-14" href="#">STAGE 3</a>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link font-12 px- button" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MASTERS LEVEL</a>
-                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                    <a class="dropdown-item font-14" href="#">STAGE 1</a>
-                                                    <a class="dropdown-item font-14" href="#">STAGE 2</a>
-                                                    <a class="dropdown-item font-14" href="#">STAGE 3</a>
-                                                    <a class="dropdown-item font-14" href="#">STAGE 4</a>
-                                                    <a class="dropdown-item font-14" href="#">STAGE 5</a>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link font-12 px- button" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PHD LEVEL</a>
-                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                    <a class="dropdown-item font-14" href="#">STAGE 1</a>
-                                                    <a class="dropdown-item font-14" href="#">STAGE 2</a>
-                                                    <a class="dropdown-item font-14" href="#">STAGE 3</a>
-                                                    <a class="dropdown-item font-14" href="#">STAGE 4</a>
-                                                    <a class="dropdown-item font-14" href="#">STAGE 5</a>
-                                                    <a class="dropdown-item font-14" href="#">STAGE 6</a>
-                                                    <a class="dropdown-item font-14" href="#">STAGE 7</a>
-                                            </div>
-                                        </li>
-                                        <div class="settings pt-5 mt-5">
-                                                <a href="#"><i class="fa fa-cog f-icon2 fa-1x mt-5"style="color:white" aria-hidden="true"></i></a>
-                                                 <a href="#"><p class="trans3">Settings</p></a>
-                                                 <i class=""></i>
-                                        </div>
-                                </nav> -->
+                            
                         </div>        
                         <div class="col-md-10 ">
                             <div class="container-fluid">
@@ -113,6 +69,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                <!-- php code that returns form input from the database to the admin dashboard -->
                                                 <?php               
                                                     include("dbconnect.php");
                                                     $res = $db->query("SELECT * FROM pdgstage");
@@ -126,7 +83,7 @@
                                                             <td>".$row['full_name']."</td>
                                                             <td>".$row['reg_number']."</td>
                                                             <td>".$row['email']."</td>
-                                                            <td>".$row['file_name']."</td>
+                                                            <td><a href='files/".$row['sudoe']."'>".$row['file_name']."</a></td>
                                                             <td><button type='button' class='btn btn-success'>Successful</button></td>
                                                             <td><button type='button' class='btn btn-danger'>Unsuccessful</button></td>
                                                         </tr>";
@@ -134,18 +91,7 @@
                                                         $i++;
                                                     }
                                                 ?>
-                                                    <!-- <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
-                                                    </tr> -->
+                                                
                                                 </tbody>
                                             </table>
                                         </div>
